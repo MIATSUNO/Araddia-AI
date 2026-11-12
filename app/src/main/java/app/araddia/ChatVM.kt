@@ -206,8 +206,8 @@ class ChatVM(private val app: Application) : AndroidViewModel(app) {
         val plain = s.replace(Regex("```[\\s\\S]*?```"), " ").replace(Regex("[*`#_]"), "")
         tts?.speak(plain.take(1500), TextToSpeech.QUEUE_FLUSH, null, "araddia")
     }
-    fun setSpeak(v: Boolean) { speak = v; store.tts = v; if (!v) tts?.stop() }
-    fun setWeb(v: Boolean) { web = v; store.web = v }
+    fun updateSpeak(v: Boolean) { speak = v; store.tts = v; if (!v) tts?.stop() }
+    fun updateWeb(v: Boolean) { web = v; store.web = v }
 
     // ---------- anexos ----------
     fun attach(uri: Uri) {
