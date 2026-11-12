@@ -188,7 +188,7 @@ fun AraddiaApp(vm: ChatVM = viewModel()) {
                         Text("Araddia", fontSize = 26.sp, color = Cream, fontFamily = FontFamily.Serif)
                         Text(vm.status.label, fontSize = 12.sp, color = Orange, fontStyle = FontStyle.Italic)
                     }
-                    Ico("🔊", dim = !vm.speak) { vm.setSpeak(!vm.speak) }
+                    Ico("🔊", dim = !vm.speak) { vm.updateSpeak(!vm.speak) }
                     Ico("⚙") { settings = true }
                 }
                 LazyColumn(Modifier.weight(1f).padding(horizontal = 12.dp), state = list, verticalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -218,7 +218,7 @@ fun AraddiaApp(vm: ChatVM = viewModel()) {
                             .putExtra(RecognizerIntent.EXTRA_LANGUAGE, "pt-BR").putExtra(RecognizerIntent.EXTRA_PROMPT, "Fala, mortal")
                         try { voice.launch(i) } catch (_: Exception) { Toast.makeText(ctx, "Sem reconhecimento de voz neste aparelho", Toast.LENGTH_SHORT).show() }
                     }
-                    Ico("🌐", dim = !vm.web) { vm.setWeb(!vm.web) }
+                    Ico("🌐", dim = !vm.web) { vm.updateWeb(!vm.web) }
                     OutlinedTextField(
                         input, { input = it }, Modifier.weight(1f), placeholder = { Text("Ouse falar…") }, maxLines = 4,
                         colors = OutlinedTextFieldDefaults.colors(
@@ -301,7 +301,7 @@ fun SettingsDialog(vm: ChatVM, onClose: () -> Unit) {
                 OutlinedTextField(tv, { tv = it }, label = { Text("Chave Tavily (busca web; opcional)") }, visualTransformation = PasswordVisualTransformation())
                 Text("Sem chave, a busca 🌐 usa a Wikipédia.", fontSize = 12.sp, color = Dim)
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text("Ler respostas em voz alta", Modifier.weight(1f)); Switch(vm.speak, { vm.setSpeak(it) })
+                    Text("Ler respostas em voz alta", Modifier.weight(1f)); Switch(vm.speak, { vm.updateSpeak(it) })
                 }
                 HorizontalDivider()
                 Text("Memória (diga \"lembra que…\")", fontSize = 13.sp)
