@@ -27,7 +27,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
     // Motor local (Gemma 3n / Gemma 4 em .litertlm/.task). Se o Gradle não achar a versão, use a mais recente.
-    implementation("com.google.mediapipe:tasks-genai:0.10.26")
+    implementation("com.google.mediapipe:tasks-genai:0.10.27")
     // Vídeo de fundo
     implementation("androidx.media3:media3-exoplayer:1.4.1")
     implementation("androidx.media3:media3-ui:1.4.1")
