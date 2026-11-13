@@ -10,11 +10,19 @@ android {
         applicationId = "app.araddia"
         minSdk = 26
         targetSdk = 35
-        versionCode = 3
-        versionName = "2.1"
+        versionCode = 4
+        versionName = "2.2"
         ndk { abiFilters += "arm64-v8a" }
     }
-    buildTypes { release { isMinifyEnabled = false } }
+    // Permite instalar este build de depuração ao lado da versão normal,
+    // sem fingir que pode atualizar um APK assinado com outra chave.
+    buildTypes {
+        debug {
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = "-debug"
+        }
+        release { isMinifyEnabled = false }
+    }
     compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }
     kotlinOptions { jvmTarget = "17" }
     buildFeatures { compose = true }
